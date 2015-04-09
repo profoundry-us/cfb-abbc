@@ -20,7 +20,7 @@
     "url": "https://github.com/profoundry-us/cfb-abbc/issues"
   },
   "homepage": "https://github.com/profoundry-us/cfb-abbc",
-  "dependencies": {
-    "angular2": "^2.0.0-alpha.18"
+  "devDependencies": {
+    "http-server": "^0.8.0"
   }
 }
