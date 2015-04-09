@@ -25,5 +25,10 @@
     "font-awesome": "~4.3.0",
     "bootstrap": "~3.3.4",
     "angularfire": "~1.0.0"
+  },
+  "overrides": {
+    "angular": {
+      "dependencies": "jquery"
+    }
   }
 }

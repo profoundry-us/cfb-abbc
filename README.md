@@ -1,4 +1,5 @@
 # cfb-abbc
+
 Abilene's Best Boot Camp
 
 ## Setup
@@ -7,6 +8,6 @@ Run the following:
 
     npm install
     bower install
-    ./node_modules/http-server/bin/http-server
+    gulp
 
-Open a brower at http://localhost:8080/
+This will automatically open your default browser at http://localhost:3000 and show you the site.
