@@ -1,0 +1,61 @@
+<!--
+<md-slider ng-model="progress"></md-slider>
+//-->
+
+<h1 class="md-headline">Challenges</h1>
+
+<div layout="row" layout-align="center">
+    <md-progress-circular md-mode="indeterminate" ng-if="!vm.challenges.length"></md-progress-circular>
+</div>
+
+<md-card ng-repeat="challenge in vm.challenges">
+    <md-subheader class="md-subhead md-no-sticky">
+        <div layout="row">
+            <span>{{challenge.name}}</span>
+
+            <span flex></span>
+
+            <md-button aria-label="Remove Challenge" class="md-fab md-mini md-warn"
+                       ng-click="vm.removeChallenge(challenge)">
+                <i class="fa fa-remove"></i>
+            </md-button>
+        </div>
+    </md-subheader>
+
+    <md-card-content>
+        <md-list>
+
+            <md-list-item>
+                Some content here...
+            </md-list-item>
+
+            <md-divider></md-divider>
+
+            <md-list-item>
+                Footer: {{challenge.$id}}
+            </md-list-item>
+        </md-list>
+    </md-card-content>
+</md-card>
+
+<md-card>
+    <md-subheader>
+        <div layout="row">
+            <span>New Challenge</span>
+
+            <span flex></span>
+
+            <md-button aria-label="Add Challenge" class="md-fab md-mini md-success"
+                       ng-click="vm.addChallenge(vm.newChallenge)">
+                <i class="fa fa-plus"></i>
+            </md-button>
+        </div>
+    </md-subheader>
+
+    <md-card-content>
+        <md-input-container flex>
+            <label>Name</label>
+            <input type="text" ng-model="vm.newChallenge.name"/>
+        </md-input-container>
+    </md-card-content>
+</md-card>

@@ -101,7 +101,8 @@ gulp.task("serve", ["build:debug"], function(cb) {
   gulp.watch(appSCSSPath, ["sass"]);
 
   // Watch our built index.html for changes and reload the browser
-  gulp.watch(buildIndexPath).on("change", browserSync.reload);
+  // Temporarily remove this as it doesn't seem to work quite right with Angular...
+  //gulp.watch(buildIndexPath).on("change", browserSync.reload);
 });
 
 gulp.task("default", function(cb) {

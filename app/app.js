@@ -1,1 +1,1 @@
-angular.module("abbc", ["firebase"]);
+angular.module("abbc", ["firebase", "ngMaterial"]);

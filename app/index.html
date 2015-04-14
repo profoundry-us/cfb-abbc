@@ -1,23 +1,37 @@
-<html>
-  <head>
-    <title>Abilene's Best Boot Camp</title>
+<html ng-app="abbc" ng-strict-di>
+    <head>
+        <title>Abilene's Best Boot Camp</title>
 
-    <!-- inject:css -->
-    <!-- endinject -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
 
-    <!-- app:css -->
-    <!-- endinject -->
-  </head>
+        <meta name="viewport" content="initial-scale=1"/>
 
-  <body>
-    <div ng-app="abbc" ng-strict-di>
-      <nutrition-tracker></nutrition-tracker>
-    </div>
+        <!-- inject:css -->
+        <!-- endinject -->
 
-    <!-- inject:js -->
-    <!-- endinject -->
+        <!-- app:css -->
+        <!-- endinject -->
+    </head>
 
-    <!-- app:js -->
-    <!-- endinject -->
-  </body>
+    <body layout="column" layout-fill>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <span>Abilene's Best Boot Camp!</span>
+
+                <span flex></span>
+
+                <md-button aria-label="random right button">Right Button</md-button>
+            </div>
+        </md-toolbar>
+
+        <md-content layout="row" layout-align="center">
+            <challenge-list flex="60"></challenge-list>
+        </md-content>
+
+        <!-- inject:js -->
+        <!-- endinject -->
+
+        <!-- app:js -->
+        <!-- endinject -->
+    </body>
 </html>
