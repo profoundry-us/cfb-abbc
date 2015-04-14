@@ -36,15 +36,27 @@ gulp.task("sass", function() {
 });
 
 
-// Copy our app-related files
-gulp.task("build:debug:copy:app", function() {
-  return gulp.src(path.join(env.paths.app, "**/*")).pipe(gulp.dest(path.join(env.paths.build, env.paths.app)));
+// Transpile our ES6 code into ES5 using traceur
+gulp.task("build:debug:transpile", function() {
+  var inPath = path.join(env.paths.app, "**/*.es6");
+  var outPath = path.join(env.paths.build, env.paths.app);
+
+  return gulp.src([
+      $.traceur.RUNTIME_PATH,
+      inPath
+    ])
+    .pipe($.traceur({ modules: "inline" }))
+    .pipe($.rename(function(path) {
+      // Rename our files from .es6 to .js
+      path.extname = ".js";
+    }))
+    .pipe(gulp.dest(outPath));
 });
 
 
-// Copy all files
+// Copy all relevant files
 gulp.task("build:debug:copy", function(cb) {
-  $.runSequence("build:debug:copy:app", cb);
+  return gulp.src(path.join(env.paths.app, "**/*.html")).pipe(gulp.dest(path.join(env.paths.build, env.paths.app)));
 });
 
 
@@ -67,20 +79,20 @@ gulp.task("build:debug:inject", function() {
 });
 
 
-// Run the debug build
-gulp.task("build:debug", function(cb) {
-  $.runSequence("clean", "sass", "build:debug:copy", "build:debug:inject", cb);
+// Run all of the build tasks
+gulp.task("build:tasks", function(cb) {
+  $.runSequence("sass", "build:debug:transpile", "build:debug:copy", "build:debug:inject", cb);
 });
 
 
-// A serve-specific build task which excludes the clean
-gulp.task("serve:build", function(cb) {
-  $.runSequence("sass", "build:debug:copy", "build:debug:inject", cb);
+// Run the debug build
+gulp.task("build:debug", function(cb) {
+  $.runSequence("clean", "build:tasks", cb);
 });
 
 
 // Serve our files
-gulp.task("serve", ["build:debug"], function(cb) {
+gulp.task("serve", ["build:tasks"], function(cb) {
   browserSync({
     server: {
       baseDir: "build/debug/app",
@@ -90,12 +102,12 @@ gulp.task("serve", ["build:debug"], function(cb) {
     }
   });
 
-  var appFilesPath = path.join(env.paths.app, "**/*.{html,js}");
+  var appFilesPath = path.join(env.paths.app, "**/*.{html,js,es6}");
   var appSCSSPath = path.join(env.paths.app, "**/*.scss");
   var buildIndexPath = path.join(env.paths.build, env.paths.app, "index.html");
 
   // Watch our files for changes and rerun the copy/inject tasks
-  gulp.watch(appFilesPath, ["serve:build"]);
+  gulp.watch(appFilesPath, ["build:debug"]);
 
   // Watch our SCSS files for changes
   gulp.watch(appSCSSPath, ["sass"]);

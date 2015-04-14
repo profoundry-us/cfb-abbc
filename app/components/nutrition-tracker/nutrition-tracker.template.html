@@ -1,8 +1,0 @@
-<ul>
-  <li ng-repeat="challenge in vm.challenges">{{challenge.$id}} - {{challenge.name}} <i class="fa fa-remove" ng-click="vm.removeChallenge(challenge)"></i></li>
-</ul>
-
-<div class="col-md-4">
-  <input ng-model="vm.newChallenge.name" type="text" placeholder="New Challenge" class="form-control" />
-  <a class="btn btn-sm btn-default" ng-click="vm.addChallenge(vm.newChallenge)"><i class="fa fa-plus"></i> Add</a>
-</div>
