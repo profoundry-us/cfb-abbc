@@ -1,9 +1,9 @@
 (function() {
-  function ChallengeListController($scope, $firebaseArray) {
-    var ref = new Firebase("https://abbc-dev.firebaseio.com" + "/challenges"),
+  function ChallengeListController($scope, store) {
+    var ref = store.child("challenges"),
         vm = this;
 
-    vm.challenges = $firebaseArray(ref);
+    vm.challenges = store.array(ref);
 
     vm.addChallenge = function(newChallenge) {
       vm.challenges.$add(newChallenge);
@@ -15,7 +15,7 @@
     };
   }
 
-  ChallengeListController.$inject = ["$scope", "$firebaseArray"];
+  ChallengeListController.$inject = ["$scope", "AbbcStore"];
 
   angular.module("abbc").controller("ChallengeListController", ChallengeListController);
 })();
