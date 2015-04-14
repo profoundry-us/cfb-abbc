@@ -1,6 +1,7 @@
 bower_components
 build
 node_modules
+.idea
 .sass-cache
 *.swp
 *.swo
