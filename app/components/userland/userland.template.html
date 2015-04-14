@@ -1,7 +1,15 @@
 <span ng-if="!vm.user">
-    <md-button class="md-fab md-mini" ng-click="vm.login('facebook')"><i class="fa fa-facebook"></i></md-button>
-    <md-button class="md-fab md-mini" ng-click="vm.login('twitter')"><i class="fa fa-twitter"></i></md-button>
-    <md-button class="md-fab md-mini" ng-click="vm.login('google')"><i class="fa fa-google"></i></md-button>
+    <md-button aria-label="Login with Facebook" class="md-fab md-mini" ng-click="vm.login('facebook')">
+        <i class="fa fa-facebook"></i>
+    </md-button>
+
+    <md-button aria-label="Login with Twitter" class="md-fab md-mini" ng-click="vm.login('twitter')">
+        <i class="fa fa-twitter"></i>
+    </md-button>
+
+    <md-button aria-label="Login with Google" class="md-fab md-mini" ng-click="vm.login('google')">
+        <i class="fa fa-google"></i>
+    </md-button>
 </span>
 
 <span ng-if="vm.user">
