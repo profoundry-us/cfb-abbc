@@ -8,6 +8,32 @@
     <md-progress-circular md-mode="indeterminate" ng-if="!vm.challenges.length"></md-progress-circular>
 </div>
 
+<md-fab>
+    <md-fab-trigger>
+        <md-button class="md-fab">
+            <i class="fa fa-plus"></i>
+        </md-button>
+    </md-fab-trigger>
+
+    <md-fab-speed-dial>
+        <md-button class="md-fab md-raised md-mini">
+            <i class="fa fa-user"></i>
+        </md-button>
+
+        <md-button class="md-fab md-primary md-mini">
+            <i class="fa fa-group"></i>
+        </md-button>
+
+        <md-button class="md-fab md-primary md-mini">
+            <i class="fa fa-pencil"></i>
+        </md-button>
+
+        <md-button class="md-fab md-primary md-mini">
+            <i class="fa fa-star"></i>
+        </md-button>
+    </md-fab-speed-dial>
+</md-fab>
+
 <md-card ng-repeat="challenge in vm.challenges">
     <md-subheader class="md-subhead md-no-sticky">
         <div layout="row">
@@ -15,9 +41,10 @@
 
             <span flex></span>
 
-            <md-button aria-label="Remove Challenge" class="md-fab md-mini md-warn"
+            <md-button aria-label="remove challenge" class="md-fab md-mini md-warn"
                        ng-click="vm.removeChallenge(challenge)">
                 <i class="fa fa-remove"></i>
+                <md-tooltip md-direction="left">Remove</md-tooltip>
             </md-button>
         </div>
     </md-subheader>

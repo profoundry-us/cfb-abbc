@@ -56,7 +56,7 @@ gulp.task("build:debug:transpile", function() {
 
 // Copy all relevant files
 gulp.task("build:debug:copy", function(cb) {
-  return gulp.src(path.join(env.paths.app, "**/*.html")).pipe(gulp.dest(path.join(env.paths.build, env.paths.app)));
+  return gulp.src(path.join(env.paths.app, "**/*.{html,js}")).pipe(gulp.dest(path.join(env.paths.build, env.paths.app)));
 });
 
 
